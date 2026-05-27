@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt — MENTALKRAFT | Martin Konzett B.A.</title>
+  <meta name="description" content="Kontaktieren Sie Martin Konzett B.A. für ein unverbindliches Gespräch über Mentaltraining. Dornbirn, Österreich.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<header>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-name">Mentalkraft</span>
+      <span class="nav-logo-subtitle">Martin Konzett B.A.</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="klienten.html">Klienten</a></li>
+      <li><a href="kontakt.html" class="active">Kontakt</a></li>
+    </ul>
+
+    <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobile-overlay" role="dialog" aria-label="Mobilmenü">
+    <a href="index.html">Home</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <a href="klienten.html">Klienten</a>
+    <a href="kontakt.html" class="active">Kontakt</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================================================================
+       SECTION 1 — HERO
+       ================================================================ -->
+  <section class="contact-hero" aria-label="Kontakt Header">
+    <div class="contact-hero-content">
+      <h1 class="page-hero-title">Kontakt</h1>
+      <p class="page-hero-subline">Sprechen wir persönlich über das, was Sie bewegt.</p>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 2 — CONTACT SPLIT
+       ================================================================ -->
+  <!-- PLACEHOLDER: Replace with Martin's preferred booking/contact solution -->
+  <div class="contact-split">
+
+    <!-- LEFT — Contact information -->
+    <div class="contact-info">
+      <h2 class="contact-info-headline reveal">Direkt erreichbar.</h2>
+      <p class="contact-info-body reveal reveal-d1">
+        Was ich für Sie ganz persönlich tun kann, erfahren Sie bei einem
+        unverbindlichen Gespräch. Ich freue mich auf Sie.
+      </p>
+
+      <div class="contact-item reveal reveal-d2">
+        <span class="contact-item-label">E-Mail</span>
+        <a href="mailto:martin.konzett@mentalkraft.eu"
+           class="contact-item-value">
+          martin.konzett@mentalkraft.eu
+        </a>
+      </div>
+
+      <div class="contact-item reveal reveal-d3">
+        <span class="contact-item-label">Telefon</span>
+        <a href="tel:+436648396974" class="contact-item-value">
+          +43 664 8396974
+        </a>
+      </div>
+
+      <div class="contact-item reveal reveal-d4">
+        <span class="contact-item-label">Adresse</span>
+        <span class="contact-item-value">
+          Niederbahn 13a<br>6850 Dornbirn<br>Österreich
+        </span>
+      </div>
+    </div>
+
+    <!-- RIGHT — Contact form -->
+    <div class="contact-form-wrapper">
+      <form class="contact-form" novalidate aria-label="Kontaktformular">
+
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" type="text" id="name" name="name"
+                 placeholder="Ihr Name" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">E-Mail</label>
+          <input class="form-input" type="email" id="email" name="email"
+                 placeholder="ihre@email.at" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="betreff">Betreff</label>
+          <input class="form-input" type="text" id="betreff" name="betreff"
+                 placeholder="Ihr Anliegen" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="nachricht">Nachricht</label>
+          <textarea class="form-textarea" id="nachricht" name="nachricht"
+                    placeholder="Beschreiben Sie kurz Ihre Situation und was Sie sich von einem Gespräch erhoffen."
+                    required aria-required="true"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Nachricht senden</button>
+
+      </form>
+    </div>
+  </div>
+
+
+  <!-- ================================================================
+       SECTION 3 — IMPRESSUM
+       ================================================================ -->
+  <section class="impressum-section" aria-labelledby="impressum-heading">
+    <div class="impressum-inner">
+      <h2 class="impressum-headline" id="impressum-heading">Impressum</h2>
+      <p class="impressum-text">
+        Informationspflicht lt. &sect; 5, Abs. 1 E-Commerce Gesetz<br>
+        Martin Konzett B.A. &nbsp;&middot;&nbsp; Akademischer Mentalcoach<br>
+        Niederbahn 13a &nbsp;&middot;&nbsp; 6850 Dornbirn &nbsp;&middot;&nbsp; Österreich<br>
+        <a href="mailto:martin.konzett@mentalkraft.eu" class="impressum-link">martin.konzett@mentalkraft.eu</a>
+        &nbsp;&middot;&nbsp;
+        <a href="tel:+436648396974" class="impressum-link">+43 664 8396974</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer" aria-label="Seitenende">
+  <div class="footer-inner">
+    <div>
+      <span class="footer-brand-name">Mentalkraft</span>
+      <span class="footer-tagline">Deine Stärke entsteht im Kopf.</span>
+    </div>
+    <address class="footer-contact" style="font-style:normal;">
+      <a href="mailto:martin.konzett@mentalkraft.eu">martin.konzett@mentalkraft.eu</a>
+      <a href="tel:+436648396974">+43 664 8396974</a>
+      <span>Niederbahn 13a, 6850 Dornbirn</span>
+    </address>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copyright">
+      &copy; 2025 Martin Konzett B.A. &nbsp;&middot;&nbsp; Akademischer Mentalcoach
+      &nbsp;&middot;&nbsp; Dornbirn, Österreich
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
