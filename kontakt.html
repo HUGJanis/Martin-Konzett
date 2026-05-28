@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt — MENTALKRAFT | Martin Konzett B.A.</title>
+  <meta name="description" content="Kontaktieren Sie Martin Konzett B.A. für ein unverbindliches Gespräch über Mentaltraining. Dornbirn, Österreich.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ================================================================
+       CSS VARIABLES
+       ================================================================ */
+    :root {
+      --color-dark:            #1A1A1A;
+      --color-dark-secondary:  #2A2A2A;
+      --color-light:           #F4F1EC;
+      --color-light-secondary: #EAE6DF;
+      --color-accent:          #B08D57;
+      --color-accent-dark:     #8A6D3F;
+      --color-text-dark:       #1C1C1C;
+      --color-text-light:      #F4F1EC;
+      --color-text-muted:      #7A7A7A;
+      --color-overlay:         rgba(20, 18, 14, 0.65);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.125rem;
+      --text-xl:   1.25rem;
+      --text-2xl:  1.5rem;
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  8rem;
+      --max-width: 1200px;
+      --nav-height: 80px;
+      --transition: 0.3s ease;
+    }
+
+    /* ================================================================
+       RESET
+       ================================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.75;
+      color: var(--color-text-dark);
+      background-color: var(--color-light);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; }
+    p { line-height: 1.75; }
+
+    /* ================================================================
+       NAVIGATION
+       ================================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      padding: 0 var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color var(--transition), box-shadow var(--transition);
+    }
+    .nav.scrolled {
+      background-color: var(--color-dark);
+      box-shadow: 0 1px 24px rgba(0,0,0,0.35);
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      gap: 3px;
+    }
+    .nav-logo-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--color-accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .nav-logo-subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.62rem;
+      color: rgba(244,241,236,0.55);
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: var(--text-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--color-accent);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--color-accent); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      width: 26px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 1001;
+      position: relative;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background-color: var(--color-text-light);
+      transition: transform var(--transition), opacity var(--transition);
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: var(--color-dark);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-md);
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      pointer-events: none;
+    }
+    .nav-mobile-overlay.open { transform: translateX(0); pointer-events: all; }
+    .nav-mobile-overlay a {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--color-text-light);
+      letter-spacing: 0.05em;
+      transition: color var(--transition);
+    }
+    .nav-mobile-overlay a:hover,
+    .nav-mobile-overlay a.active { color: var(--color-accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    .footer {
+      background-color: #111111;
+      padding: var(--space-lg) var(--space-md) 0;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      padding-bottom: var(--space-lg);
+    }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr; gap: var(--space-md); padding-bottom: var(--space-md); }
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.35rem;
+      color: var(--color-accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+    }
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: var(--text-base);
+      color: rgba(244,241,236,0.4);
+      margin-top: 0.6rem;
+      display: block;
+    }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .footer-contact a,
+    .footer-contact span {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: var(--text-sm);
+      color: rgba(244,241,236,0.5);
+      transition: color var(--transition);
+      display: block;
+    }
+    .footer-contact a:hover { color: var(--color-accent); }
+    .footer-bottom {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-md) 0;
+      border-top: 1px solid rgba(176,141,87,0.3);
+    }
+    .footer-copyright {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: var(--text-xs);
+      color: rgba(244,241,236,0.25);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    /* ================================================================
+       SCROLL REVEAL ANIMATIONS
+       ================================================================ */
+    body.will-animate .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    body.will-animate .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* ================================================================
+       KONTAKT PAGE STYLES
+       ================================================================ */
+
+    /* Contact intro — first section, accounts for fixed nav */
+    .contact-intro {
+      background-color: var(--color-dark);
+      padding: calc(var(--nav-height) + 5rem) var(--space-md) 6rem;
+      text-align: center;
+    }
+    .contact-intro-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .contact-intro-headline {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--color-text-light);
+      line-height: 1.1;
+      margin-bottom: 1.75rem;
+    }
+    .contact-intro-rule {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background-color: var(--color-accent);
+      margin: 0 auto 1.75rem;
+    }
+    .contact-intro-body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: rgba(244,241,236,0.6);
+      line-height: 1.9;
+    }
+
+    /* Contact form section — dark, centered */
+    .contact-form-section {
+      background-color: var(--color-dark);
+      padding: 5rem var(--space-md);
+    }
+    .contact-form-container {
+      max-width: 680px;
+      margin: 0 auto;
+      background-color: #FDFAF6;
+      padding: 3.5rem;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.45);
+    }
+    @media (max-width: 600px) {
+      .contact-form-container { padding: 2rem 1.5rem; }
+    }
+    .contact-form-eyebrow {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-accent);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-dark);
+    }
+    .form-input,
+    .form-textarea {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      padding: 0.875rem 1rem;
+      border: 1px solid #C8C4BC;
+      background-color: #FFFFFF;
+      color: var(--color-text-dark);
+      outline: none;
+      border-radius: 0;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(176,141,87,0.12);
+    }
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    .btn-submit {
+      width: 100%;
+      background-color: var(--color-accent);
+      color: var(--color-dark);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 1.1rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--transition);
+      border-radius: 0;
+    }
+    .btn-submit:hover { background-color: var(--color-accent-dark); }
+    .btn-submit:disabled { cursor: default; }
+
+    /* Contact details section — dark, 3-card grid */
+    .contact-details-section {
+      background-color: var(--color-dark-secondary);
+      padding: 5rem var(--space-md);
+    }
+    .contact-details-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .contact-details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(176,141,87,0.18);
+    }
+    @media (max-width: 768px) {
+      .contact-details-grid { grid-template-columns: 1fr; }
+      .contact-detail-card {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(176,141,87,0.18);
+      }
+      .contact-detail-card:last-child { border-bottom: none; }
+    }
+    .contact-detail-card {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(176,141,87,0.18);
+      transition: background-color var(--transition);
+    }
+    .contact-detail-card:last-child { border-right: none; }
+    .contact-detail-card:hover { background-color: rgba(176,141,87,0.04); }
+    .contact-detail-icon {
+      width: 26px;
+      height: 26px;
+      display: block;
+      margin: 0 auto 1.25rem;
+      stroke: var(--color-accent);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-detail-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .contact-detail-value {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: var(--text-base);
+      color: rgba(244,241,236,0.8);
+      line-height: 1.8;
+      display: block;
+      transition: color var(--transition);
+    }
+    a.contact-detail-value:hover { color: var(--color-accent); }
+
+    /* Impressum */
+    .impressum-section {
+      background-color: var(--color-light-secondary);
+      padding: var(--space-lg) var(--space-md);
+    }
+    .impressum-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .impressum-headline {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: var(--color-text-dark);
+      margin-bottom: var(--space-sm);
+    }
+    .impressum-text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.85;
+    }
+    .impressum-link { color: var(--color-text-muted); transition: color var(--transition); }
+    .impressum-link:hover { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<header>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="nav-logo" href="index.html">
+      <span class="nav-logo-name">Mentalkraft</span>
+      <span class="nav-logo-subtitle">Martin Konzett B.A.</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="ueber-mich.html">Über mich</a></li>
+      <li><a href="klienten.html">Klienten</a></li>
+      <li><a href="kontakt.html" class="active">Kontakt</a></li>
+    </ul>
+
+    <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile-overlay" id="mobile-overlay" role="dialog" aria-label="Mobilmenü">
+    <a href="index.html">Home</a>
+    <a href="ueber-mich.html">Über mich</a>
+    <a href="klienten.html">Klienten</a>
+    <a href="kontakt.html" class="active">Kontakt</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================================================================
+       SECTION 1 — INTRO TEXT
+       ================================================================ -->
+  <section class="contact-intro" aria-label="Einleitung">
+    <div class="contact-intro-inner">
+      <h2 class="contact-intro-headline reveal">Direkt erreichbar.</h2>
+      <span class="contact-intro-rule reveal reveal-d1"></span>
+      <p class="contact-intro-body reveal reveal-d2">
+        Was ich für Sie ganz persönlich tun kann, erfahren Sie bei einem
+        unverbindlichen Gespräch. Ich freue mich auf Sie.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 2 — CONTACT FORM
+       ================================================================ -->
+  <section class="contact-form-section" aria-label="Kontaktformular">
+    <div class="contact-form-container reveal">
+      <p class="contact-form-eyebrow">Termin &amp; Anfrage</p>
+      <form class="contact-form" novalidate aria-label="Kontaktformular">
+
+        <div class="form-group">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-input" type="text" id="name" name="name"
+                 placeholder="Ihr Name" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">E-Mail</label>
+          <input class="form-input" type="email" id="email" name="email"
+                 placeholder="ihre@email.at" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="betreff">Betreff</label>
+          <input class="form-input" type="text" id="betreff" name="betreff"
+                 placeholder="Ihr Anliegen" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="nachricht">Nachricht</label>
+          <textarea class="form-textarea" id="nachricht" name="nachricht"
+                    placeholder="Beschreiben Sie kurz Ihre Situation und was Sie sich von einem Gespräch erhoffen."
+                    required aria-required="true"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Nachricht senden</button>
+
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 3 — CONTACT DETAILS
+       ================================================================ -->
+  <section class="contact-details-section" aria-label="Kontaktdaten">
+    <div class="contact-details-inner">
+      <div class="contact-details-grid">
+
+        <div class="contact-detail-card reveal">
+          <svg class="contact-detail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 7l10 7 10-7"/>
+          </svg>
+          <span class="contact-detail-label">E-Mail</span>
+          <a href="mailto:martin.konzett@mentalkraft.eu" class="contact-detail-value">
+            martin.konzett@mentalkraft.eu
+          </a>
+        </div>
+
+        <div class="contact-detail-card reveal reveal-d1">
+          <svg class="contact-detail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.46.57 3.58.11.35.03.74-.24 1.02L6.6 10.8z"/>
+          </svg>
+          <span class="contact-detail-label">Telefon</span>
+          <a href="tel:+436648396974" class="contact-detail-value">
+            +43 664 8396974
+          </a>
+        </div>
+
+        <div class="contact-detail-card reveal reveal-d2">
+          <svg class="contact-detail-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <span class="contact-detail-label">Adresse</span>
+          <span class="contact-detail-value">
+            Niederbahn 13a<br>6850 Dornbirn<br>Österreich
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 4 — IMPRESSUM
+       ================================================================ -->
+  <section class="impressum-section" aria-labelledby="impressum-heading">
+    <div class="impressum-inner">
+      <h2 class="impressum-headline" id="impressum-heading">Impressum</h2>
+      <p class="impressum-text">
+        Informationspflicht lt. &sect; 5, Abs. 1 E-Commerce Gesetz<br>
+        Martin Konzett B.A. &nbsp;&middot;&nbsp; Akademischer Mentalcoach<br>
+        Niederbahn 13a &nbsp;&middot;&nbsp; 6850 Dornbirn &nbsp;&middot;&nbsp; Österreich<br>
+        <a href="mailto:martin.konzett@mentalkraft.eu" class="impressum-link">martin.konzett@mentalkraft.eu</a>
+        &nbsp;&middot;&nbsp;
+        <a href="tel:+436648396974" class="impressum-link">+43 664 8396974</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer" aria-label="Seitenende">
+  <div class="footer-inner">
+    <div>
+      <span class="footer-brand-name">Mentalkraft</span>
+      <span class="footer-tagline">Deine Stärke entsteht im Kopf.</span>
+    </div>
+    <address class="footer-contact" style="font-style:normal;">
+      <a href="mailto:martin.konzett@mentalkraft.eu">martin.konzett@mentalkraft.eu</a>
+      <a href="tel:+436648396974">+43 664 8396974</a>
+      <span>Niederbahn 13a, 6850 Dornbirn</span>
+    </address>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copyright">
+      &copy; 2025 Martin Konzett B.A. &nbsp;&middot;&nbsp; Akademischer Mentalcoach
+      &nbsp;&middot;&nbsp; Dornbirn, Österreich
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
